@@ -1,12 +1,13 @@
 // Importar el núcleo de Angular
 import {Component} from 'angular2/core';
 import {ROUTER_DIRECTIVES, RouteConfig,Router} from "angular2/router";
+import {RestaurantesListComponent} from "./components/restaurantes-list.component";
 
 // Decorador component, indicamos en que etiqueta se va a cargar la plantilla
 @Component({
     selector: 'my-app',
     templateUrl: 'app/view/home.html',
-    directives: [ROUTER_DIRECTIVES],
+    directives: [ROUTER_DIRECTIVES,RestaurantesListComponent],
     styleUrls: ['../assets/css/styles.css']
 })
 

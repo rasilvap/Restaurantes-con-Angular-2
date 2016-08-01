@@ -1,11 +1,12 @@
 import {Component, OnInit} from "angular2/core";
 import {ROUTER_DIRECTIVES, RouteConfig, Router} from "angular2/router";
+import {RestauranteService} from "../services/restaurante.service";
 
 
 @Component({
 	selector: "restaurantes-list",
 	templateUrl: "app/view/restaurantes-list.html",
-	directives: [ROUTER_DIRECTIVES]
+	providers: [RestauranteService]
 })
 
 export class RestaurantesListComponent implements OnInit {
@@ -13,6 +14,8 @@ export class RestaurantesListComponent implements OnInit {
 	public status: string;
 	public errorMessage;
 	public confirmado;
+
+  constructor(private _restauranteService: RestauranteService){}
 
 
  	ngOnInit() {
@@ -22,21 +25,6 @@ export class RestaurantesListComponent implements OnInit {
 
 	getRestaurantes(){
 		let box_restaurantes = <HTMLElement>document.querySelector("#restaurantes-list .loading");
-
-
-
-	}
-
-	onBorrarConfirm(id){
-		this.confirmado = id;
-	}
-
-	onCancelarConfirm(id){
-		this.confirmado = null;
-	}
-
-	onBorrarRestaurante(id){
-
 	}
 
 }

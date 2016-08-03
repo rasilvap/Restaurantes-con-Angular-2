@@ -31,7 +31,22 @@ System.register(["angular2/core", "../services/restaurante.service"], function(e
                     console.log("restaurantes-list component cargado");
                 };
                 RestaurantesListComponent.prototype.getRestaurantes = function () {
-                    var box_restaurantes = document.querySelector("#restaurantes-list .loading");
+                    var _this = this;
+                    this._restauranteService.getRestaurantes()
+                        .subscribe(function (result) {
+                        _this.restaurantes = result.data;
+                        _this.status = result.status;
+                        if (_this.status !== "success") {
+                            alert("Error en el servidor");
+                        }
+                        //box_restaurantes.style.display = "none";
+                    }, function (error) {
+                        _this.errorMessage = error;
+                        if (_this.errorMessage !== null) {
+                            console.log(_this.errorMessage);
+                            alert("Error en la petición");
+                        }
+                    });
                 };
                 RestaurantesListComponent = __decorate([
                     core_1.Component({

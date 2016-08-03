@@ -9,7 +9,7 @@ export class RestauranteService{
 	constructor(private _http: Http){}
 
 	getRestaurantes(){
-		return this._http.get("http://localhost/slim/restaurantes-api.php/restaurantes")
+		return this._http.get("http://localhost/api-rest/restaurantes-api.php/restaurantes")
 							.map(res => res.json());
 	}
 

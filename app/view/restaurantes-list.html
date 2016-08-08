@@ -1,15 +1,25 @@
 <h1>{{titulo}}</h1>
 
 <ul id="restaurantes-list">
+	<li class="loading">
+	<img src="../../assets/images/loader.gif" id='loading' />
+	</li>
 	<li *ngFor="#restaurante of restaurantes" class="restaurante-item">
-		
+		<div class ="image"></div>
 		<div class="data">
 			<h4>{{restaurante.nombre}}</h4>
 			<p>{{restaurante.direccion}}</p>
 			<p>
+				<a href="" class="btn btn-ver">Ver</a>
+				<a href="" class="btn btn-editar">Editar</a>
+				<a href="" class="btn btn-eliminar">Eliminar</a>
+
+				
+
+
 			</p>
 			</div>
 		<div class="clearfix"></div>
 	</li>
-
+<div class="clearfix"></div>
 </ul>

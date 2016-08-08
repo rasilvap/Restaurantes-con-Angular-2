@@ -16,15 +16,19 @@ export class RestaurantesListComponent implements OnInit {
 	public status: string;
 	public errorMessage;
 	public confirmado;
+
   constructor(private _restauranteService: RestauranteService){}
 
 
  	ngOnInit() {
+
  		this.getRestaurantes();
+
 		console.log("restaurantes-list component cargado");
 	}
 
 	getRestaurantes(){
+		let box_restaurantes = <HTMLElement>document.querySelector("#restaurantes-list.loading");
 
 		this._restauranteService.getRestaurantes()
 									.subscribe(
@@ -36,7 +40,7 @@ export class RestaurantesListComponent implements OnInit {
 													alert("Error en el servidor");
 												}
 
-												//box_restaurantes.style.display = "none";
+											
 										},
 										error => {
 											this.errorMessage = <any>error;

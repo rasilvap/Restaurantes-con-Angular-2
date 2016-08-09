@@ -7,7 +7,8 @@ import {Restaurante} from "../model/restaurante";
 @Component({
 	selector: "restaurantes-list",
 	templateUrl: "app/view/restaurantes-list.html",
-	providers: [RestauranteService]
+	providers: [RestauranteService],
+	directives: [ROUTER_DIRECTIVES]
 })
 
 export class RestaurantesListComponent implements OnInit {
@@ -40,7 +41,7 @@ export class RestaurantesListComponent implements OnInit {
 													alert("Error en el servidor");
 												}
 
-											
+
 										},
 										error => {
 											this.errorMessage = <any>error;

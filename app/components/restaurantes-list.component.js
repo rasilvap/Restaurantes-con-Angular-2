@@ -35,7 +35,8 @@ System.register(["angular2/core", "angular2/router", "../services/restaurante.se
                 };
                 RestaurantesListComponent.prototype.getRestaurantes = function () {
                     var _this = this;
-                    var box_restaurantes = document.querySelector("#restaurantes-list.loading");
+                    var box_restaurantes = document.querySelector("#restaurantes-list .loading");
+                    box_restaurantes.style.visibility = "visible";
                     this._restauranteService.getRestaurantes()
                         .subscribe(function (result) {
                         _this.restaurantes = result.data;
@@ -43,6 +44,7 @@ System.register(["angular2/core", "angular2/router", "../services/restaurante.se
                         if (_this.status !== "success") {
                             alert("Error en el servidor");
                         }
+                        box_restaurantes.style.display = "none";
                     }, function (error) {
                         _this.errorMessage = error;
                         if (_this.errorMessage !== null) {
@@ -78,8 +80,8 @@ System.register(["angular2/core", "angular2/router", "../services/restaurante.se
                     core_1.Component({
                         selector: "restaurantes-list",
                         templateUrl: "app/view/restaurantes-list.html",
-                        providers: [restaurante_service_1.RestauranteService],
-                        directives: [router_1.ROUTER_DIRECTIVES]
+                        directives: [router_1.ROUTER_DIRECTIVES],
+                        providers: [restaurante_service_1.RestauranteService]
                     }), 
                     __metadata('design:paramtypes', [restaurante_service_1.RestauranteService])
                 ], RestaurantesListComponent);

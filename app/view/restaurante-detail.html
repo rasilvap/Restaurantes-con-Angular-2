@@ -1,5 +1,5 @@
 <div *ngIf="restaurante" class="restaurante-box">
-	<img class="imagen-rest-detail" src="http://localhost/slim/uploads/{{restaurante.imagen}}" *ngIf="restaurante.imagen && restaurante.imagen !== 'null'" />
+	<img class="imagen-rest-detail" src="http://localhost/api-rest/uploads/{{restaurante.imagen}}" *ngIf="restaurante.imagen && restaurante.imagen !== 'null'" />
 	<div class="data-rest">
 		<h1>Restaurante: {{restaurante.nombre}}</h1>
 		<p class="precio">

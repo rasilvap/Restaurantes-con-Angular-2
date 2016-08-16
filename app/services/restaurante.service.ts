@@ -13,10 +13,15 @@ export class RestauranteService{
 							.map(res => res.json());
 	}
 
-	getRestaurante(id: string){
-
+	getRestaurante(id: string,random = null){
+		if(random == null){
 			return this._http.get("http://localhost/api-rest/restaurantes-api.php/restaurante/"+id)
 							.map(res => res.json());
+		}else{
+			return this._http.get("http://localhost/api-rest/restaurantes-api.php/random-restaurante")
+							.map(res => res.json());
+		}
+
 	}
 
   addRestaurante(restaurante: Restaurante) {
@@ -32,13 +37,12 @@ export class RestauranteService{
 		let json = JSON.stringify(restaurante);
 		let params = "json="+json;
 		let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
-
 		return this._http.post("http://localhost/api-rest/restaurantes-api.php/update-restaurante/"+id,
 				params, {headers: headers}).map(res => res.json());
 	}
 
 	deleteRestaurante(id: string){
-		return this._http.get("http://localhost/slim/restaurantes-api.php/delete-restaurante/"+id)
+		return this._http.get("http://localhost/api-rest/restaurantes-api.php/delete-restaurante/"+id)
 							.map(res => res.json());
 	}
 

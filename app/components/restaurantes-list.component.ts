@@ -3,12 +3,11 @@ import {ROUTER_DIRECTIVES, RouteConfig, Router} from "angular2/router";
 import {RestauranteService} from "../services/restaurante.service";
 import {Restaurante} from "../model/restaurante";
 
-
 @Component({
 	selector: "restaurantes-list",
 	templateUrl: "app/view/restaurantes-list.html",
-	providers: [RestauranteService],
-	directives: [ROUTER_DIRECTIVES]
+	directives: [ROUTER_DIRECTIVES],
+	providers: [RestauranteService]
 })
 
 export class RestaurantesListComponent implements OnInit {
@@ -18,18 +17,16 @@ export class RestaurantesListComponent implements OnInit {
 	public errorMessage;
 	public confirmado;
 
-  constructor(private _restauranteService: RestauranteService){}
-
+	constructor(private _restauranteService: RestauranteService){}
 
  	ngOnInit() {
-
  		this.getRestaurantes();
-
 		console.log("restaurantes-list component cargado");
 	}
 
 	getRestaurantes(){
-		let box_restaurantes = <HTMLElement>document.querySelector("#restaurantes-list.loading");
+		let box_restaurantes = <HTMLElement>document.querySelector("#restaurantes-list .loading");
+		box_restaurantes.style.visibility = "visible";
 
 		this._restauranteService.getRestaurantes()
 									.subscribe(
@@ -41,7 +38,7 @@ export class RestaurantesListComponent implements OnInit {
 													alert("Error en el servidor");
 												}
 
-
+												box_restaurantes.style.display = "none";
 										},
 										error => {
 											this.errorMessage = <any>error;
